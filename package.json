@@ -1,0 +1,48 @@
+{
+  "name": "ev-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "start": "nodemon  -r esm src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Primates-Development-Pvt/EV-Server.git"
+  },
+  "author": "Hemakumar Backend",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Primates-Development-Pvt/EV-Server/issues"
+  },
+  "homepage": "https://github.com/Primates-Development-Pvt/EV-Server#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.1",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "debug": "^4.3.4",
+    "dotenv": "^16.0.3",
+    "email-validator": "^2.0.4",
+    "esm": "^3.2.25",
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.6.0",
+    "express-rate-limit-ioredis-store": "^1.0.4",
+    "helmet": "^6.0.0",
+    "http-errors": "^2.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "moment-timezone": "^0.5.38",
+    "mongoose": "^6.6.7",
+    "mongoose-id-validator": "^0.6.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.8.0",
+    "nodemon": "^2.0.20",
+    "otp-generator": "^4.0.0",
+    "validatorjs": "^3.22.1",
+    "winston": "^3.8.2",
+    "winston-mail": "^2.0.0"
+  }
+}
