@@ -1,5 +1,5 @@
 import logger from '../../middlewares/logger';
-import AdminService from '../../service/admin/user.service';
+import AdminService from '../../services/admin/user.service';
 import {
   handleResponse,
   handleError,

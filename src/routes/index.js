@@ -2,10 +2,12 @@ import path from 'path';
 import multer from 'multer';
 import { handleResponse, handleError } from '../middlewares/requestHandler';
 import users from './admin/user.router';
+import UtilsRouter from './utils-api/utils.router';
 
 const initializeRoutes = (app) => {
   app
     .use('/api/users', users)
+    .use('/api/utils', UtilsRouter)
     .use((req, res, next) => {
       if (req.originalUrl && req.originalUrl.split('/').pop() === 'favicon.ico') {
         return res.sendStatus(204);
