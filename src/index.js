@@ -9,7 +9,7 @@ import createError from 'http-errors';
 import mongoose from 'mongoose';
 
 import routes from './routes/index';
-// import { setupConnection } from './models/db.connect';
+import { setupConnection } from './db/db.connect';
 import { handleError } from './middlewares/requestHandler';
 import logger from './middlewares/logger';
 
@@ -66,7 +66,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(morgan('tiny')); // adding morgan to log HTTP requests
-
 
 // (async () => {
 //   try {
@@ -154,7 +153,7 @@ if (process.env.NODE_ENV !== 'test') {
     port,
     async () => {
       logger.info(`🚀 Running on ${process.pid} @ ${host}:${port}`);
-    //  await setupConnection(); // database connection
+      await setupConnection(); // database connection
     },
   );
   server.on('error', onError);

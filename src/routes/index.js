@@ -1,25 +1,25 @@
 import path from 'path';
-import multer from 'multer'; 
+import multer from 'multer';
 import { handleResponse, handleError } from '../middlewares/requestHandler';
 import users from './admin/user.router';
 
 const initializeRoutes = (app) => {
-    app
+  app
     .use('/api/users', users)
-  .use((req, res, next) => {
+    .use((req, res, next) => {
       if (req.originalUrl && req.originalUrl.split('/').pop() === 'favicon.ico') {
         return res.sendStatus(204);
       }
 
       next();
-  })
+    })
     .get('/', (req, res) => {
       res.sendFile(path.join(__dirname, '../public/Home.html'));
     })
     .get('/404', (req, res) => {
       res.sendFile(path.join(__dirname, '../public/404.html'));
     })
-   .use((error, req, res, next) => { // multerfunction
+    .use((error, req, res, next) => { // multerfunction
       if (error instanceof multer.MulterError) {
         if (error.code === 'LIMIT_FILE_SIZE') {
           return handleResponse({
@@ -43,8 +43,7 @@ const initializeRoutes = (app) => {
         });
       }
     });
-  
-}
+};
 
 export default {
   initializeRoutes,
