@@ -70,11 +70,9 @@ class AdminService {
           status: 404,
         };
       }
-      const salt = await bcrypt.genSalt(10);
-      password = await bcrypt.hash(password, salt);
+
       const create = await Users.create({
         email, password, mobileno, veh_company, veh_model, chargertype, chasenumber,
-
       });
 
       return {

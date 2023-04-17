@@ -77,7 +77,15 @@ class AdminController {
       const {
         email, password, mobileno, veh_company, veh_model, chargertype, chasenumber,
       } = req.body;
-      const result = await AdminService.registeruser(email, password, mobileno, veh_company, veh_model, chargertype, chasenumber);
+      const result = await AdminService.registeruser(
+        email,
+        password,
+        mobileno,
+        veh_company,
+        veh_model,
+        chargertype,
+        chasenumber,
+      );
       return handleResponse({
         res,
         statusCode: result.status,

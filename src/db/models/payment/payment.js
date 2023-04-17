@@ -3,7 +3,6 @@ import { isEmail } from 'validator';
 
 const paymentSchema = new Schema(
   {
-
     email: { type: String },
     state: { type: String },
     chargertype: { type: String },

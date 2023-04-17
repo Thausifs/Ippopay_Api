@@ -30,7 +30,6 @@ const StationSchema = new Schema(
     photos: [{ type: String }],
     lattitude: { type: Number },
     longitude: { type: Number },
-
   },
 
 );

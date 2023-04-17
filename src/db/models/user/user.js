@@ -1,9 +1,9 @@
 import { Schema, model } from 'mongoose';
 import { isEmail } from 'validator';
+import bcrypt from 'bcryptjs';
 
 const userSchema = new Schema(
   {
-    user_id: { type: String },
     name: { type: String },
     gender: { type: String, enum: ['Male', 'Female'] },
     email: {
@@ -42,4 +42,13 @@ const userSchema = new Schema(
     },
   },
 );
+
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) {
+    next();
+  }
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
 export default model('users', userSchema);

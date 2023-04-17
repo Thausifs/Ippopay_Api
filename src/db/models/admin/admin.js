@@ -3,7 +3,6 @@ import { isEmail } from 'validator';
 
 const adminSchema = new Schema(
   {
-    admin_id: { type: Schema.Types.ObjectId },
     email: { type: String },
     password: { type: String },
     username: { type: String },
