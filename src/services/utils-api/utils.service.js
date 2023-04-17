@@ -5,23 +5,30 @@ import {
   handleHeaderResponse,
 } from '../../middlewares/requestHandler';
 import logger from '../../middlewares/logger';
-import { Email } from '../../db/models';
+import { Emails } from '../../db/models';
 import { sentmail } from '../../helper/nodemailer';
 import { blogemail } from '../../template/blogemail';
 
 class UtilsService {
   async sendemails(email, name, message) {
     try {
-      await sentmail(
-        'Hindustanchargers@gmail.com',
+      const result = await sentmail(
+        email,
         'Request Queries',
         await blogemail(name, email, message),
+
       );
-      const responseemail = await Email.create({ email, name, message });
+      if (result.status === 200) {
+        const responseemail = await Emails.create({ email, name, message });
+        return {
+          message: result.message,
+          status: 200,
+          data: responseemail,
+        };
+      }
       return {
-        message: 'sucessfully send the email',
-        status: 200,
-        response: responseemail,
+        message: result.message,
+        status: 400,
       };
     } catch (error) {
       logger.error(error);
