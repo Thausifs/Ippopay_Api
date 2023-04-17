@@ -41,6 +41,7 @@
     "nodemailer": "^6.9.1",
     "nodemon": "^2.0.20",
     "otp-generator": "^4.0.0",
+    "validator": "^13.9.0",
     "validatorjs": "^3.22.1",
     "winston": "^3.8.2",
     "winston-mail": "^2.0.0"

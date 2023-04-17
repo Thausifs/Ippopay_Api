@@ -1,6 +1,7 @@
 import nodemailer from 'nodemailer';
 import path from 'path';
 import logger from '../middlewares/logger';
+import { Emails } from '../db/models';
 
 require('dotenv').config();
 
@@ -23,14 +24,25 @@ async function sentmail(toaddress, subject, html, attach) {
     };
     transporter.sendMail(mailoptions, async (error, info) => {
       if (error) {
-        logger.info(`🔴 ${error} requires elevated privileges`);
-      } else {
-        // db store data
-        logger.info(`🟢 Email sent: ${info.response}`);
+        logger.info(`🔴 ${error} `);
+        return {
+          status: 400,
+          message: error,
+
+        };
       }
+      // db store data
+      logger.info(`🟢 Email sent: ${info.response}`);
+
+      return {
+        status: 200,
+        message: info.response,
+
+      };
     });
   } catch (error) {
     logger.info(`Error from mail ->  ${error.message}`);
+    throw error;
   }
 }
 

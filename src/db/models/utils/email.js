@@ -9,4 +9,4 @@ const emailSchema = new Schema({
   message: { type: String },
 }, { timestamps: true });
 
-export default model('email', emailSchema);
+export default model('emails', emailSchema);
