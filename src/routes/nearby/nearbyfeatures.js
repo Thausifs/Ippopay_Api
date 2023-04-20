@@ -4,26 +4,13 @@ import NearbyController from '../../controllers/nearby/nearby.controller';
 
 const NearbyRouter = Router();
 
-const Storage = multer.diskStorage({
-  destination(req, file, callback) {
-    callback(null, './public/images/');
-  },
-  filename(req, file, callback) {
-    callback(null, Date.now() + file.originalname);
-  },
-});
+const Storage = multer.memoryStorage();
 const fileFilter = (req, file, cb) => {
   // reject a file
-
-  if (
-    file.mimetype === 'image/jpeg'
-    || file.mimetype === 'image/png'
-    || (file.mimetype === 'image/jpg' && file.Size <= 524288)
-  ) {
+  if (file.mimetype.split('/')[0] === 'image') {
     cb(null, true);
   } else {
-    cb(null, false);
-    req.session.imgmessage = 'Only JPEG OR PNG images and should be lesser than 2mb ';
+    cb(new multer.MulterError('LIMIT_UNEXPECTED_FILE'), false);
   }
 };
 const upload = multer({
@@ -35,6 +22,8 @@ const upload = multer({
 });
 
 NearbyRouter
-  .post('/addcompanies', upload.single('image'), NearbyController.registercompanies);
+  .post('/addcompanies', upload.single('image'), NearbyController.registercompanies)
+  .post('/editstations', upload.single('image'), NearbyController.EditStations);
+
 // .post('/addcafes', NearbyController.adminlogin);
 export default NearbyRouter;

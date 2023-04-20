@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose';
 
 const StationSchema = new Schema(
   {
-    type: { type: String },
+    stationtype: { type: String },
     name: { type: String },
     phoneno: { type: Number },
     email: { type: String },
@@ -14,11 +14,11 @@ const StationSchema = new Schema(
       {
         stationtype: { type: String },
         chargertype: { type: String },
-        vehtype: { enum: ['Bike', 'Car'] },
+        vehtype: { type: String, enum: ['Bike', 'Car'] },
       },
     ],
     advancebookingno: { type: Number },
-    status: { enum: ['Active', 'InActive'] },
+    status: { type: String, enum: ['Active', 'InActive'] },
     state: { type: String },
     district: { type: String },
     area: { type: String },
