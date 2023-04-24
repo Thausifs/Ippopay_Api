@@ -15,10 +15,10 @@ const initializeRoutes = (app) => {
       next();
     })
     .get('/', (req, res) => {
-      res.sendFile(path.join(__dirname, '../public/Home.html'));
+      res.sendFile(path.join(__dirname, '../../public/Home.html'));
     })
     .get('/404', (req, res) => {
-      res.sendFile(path.join(__dirname, '../public/404.html'));
+      res.sendFile(path.join(__dirname, '../../public/404.html'));
     })
     .use((error, req, res, next) => { // multerfunction
       if (error instanceof multer.MulterError) {
