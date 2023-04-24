@@ -59,7 +59,7 @@ app.use((req, res, next) => {
 const corsOptions = {
   origin: ['http://localhost:3000', 'http://52.76.62.147:3000', 'http://52.76.62.147:3001', 'http://chopeai.com', 'http://admin.chopeai.com', 'https://chopeai.com', 'https://admin.chopeai.com', 'https://master--musical-faloodeh-748c0f.netlify.app', 'http://54.255.243.154:3000',
   ],
-  optionsSuccessStatus: 200, // For legacy browser support
+  // optionsSuccessStatus: 200, // For legacy browser support
   methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
   credentials: true,
 };
@@ -114,7 +114,7 @@ routes.initializeRoutes(app);
 //   res.send(payload.repeat(10000));
 // });
 
-app.statusMessageOn404 = false; // reason insert to certificate process
+// app.statusMessageOn404 = false; // reason insert to certificate process
 app.use(async (req, res, next) => {
   next(createError.NotFound('This router does not exist'));
 });
