@@ -17,9 +17,9 @@ const initializeRoutes = (app) => {
     .get('/', (req, res) => {
       res.sendFile(path.join(__dirname, '../../public/Home.html'));
     })
-    .get('/404', (req, res) => {
-      res.sendFile(path.join(__dirname, '../../public/404.html'));
-    })
+    // .get('/404', (req, res) => {
+    //   res.sendFile(path.join(__dirname, '../../public/404.html'));
+    // })
     .use((error, req, res, next) => { // multerfunction
       if (error instanceof multer.MulterError) {
         if (error.code === 'LIMIT_FILE_SIZE') {
