@@ -1,17 +1,12 @@
 import path from 'path';
 import multer from 'multer';
 import { handleResponse, handleError } from '../middlewares/requestHandler';
-import users from './admin/user.router';
-import admin from './admin/admin.router';
-import nearby from './nearby/nearbyfeatures';
-import UtilsRouter from './utils-api/utils.router';
+import users from './User/user.router';
 
 const initializeRoutes = (app) => {
   app
     .use('/api/users', users)
-    .use('/api/admin', admin)
-    .use('/api/nearby', nearby)
-    .use('/api/utils', UtilsRouter)
+
     .use((req, res, next) => {
       if (req.originalUrl && req.originalUrl.split('/').pop() === 'favicon.ico') {
         return res.sendStatus(204);
