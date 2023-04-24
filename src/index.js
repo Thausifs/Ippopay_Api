@@ -59,12 +59,12 @@ app.use((req, res, next) => {
 const corsOptions = {
   origin: ['http://localhost:3000', 'http://52.76.62.147:3000', 'http://52.76.62.147:3001', 'http://chopeai.com', 'http://admin.chopeai.com', 'https://chopeai.com', 'https://admin.chopeai.com', 'https://master--musical-faloodeh-748c0f.netlify.app', 'http://54.255.243.154:3000',
   ],
-  // optionsSuccessStatus: 200, // For legacy browser support
+  optionsSuccessStatus: 200, // For legacy browser support
   methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
   credentials: true,
 };
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(morgan('tiny')); // adding morgan to log HTTP requests
 
 // (async () => {
